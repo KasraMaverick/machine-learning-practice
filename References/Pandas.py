@@ -77,3 +77,30 @@ df.xs('g1')
 
 df.xs(1, level='Number')
 
+#
+d = {'a':[1, 2, np.nan], 'b':[5, np.nan, np.nan], 'c':[1, 2, 3]}
+df = pd.DataFrame(d);
+
+#drops the whole row containing a null or nan and
+#the second on drops the column
+df.dropna()
+df.dropna(axis = 1)
+
+#drops if the row or column have at least two missing values
+df.dropna(thresh=2)
+
+#fills the missing values with what you put in the quotation
+df.fillna(value="")
+
+#fills the missing value with the mean of the row
+df['a'].fillna(value=df['a'].mean())
+
+#
+data = {'Company': ['GOOG', 'GOOG', 'MSFT', 'FB', 'FB'], 'Person': ['Sam', 'Charlie', 'Amy', 'Vanessa', 'Carl', 'Sarah'],
+        'Sales': [200, 120, 340, 124, 243, 350]}
+df = pd.DataFrame(data)
+
+#using groupy in pandas
+byComp = df.groupby('Company')
+byComp.mean()
+
